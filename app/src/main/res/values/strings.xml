@@ -5,8 +5,18 @@
     <string name="title_activity_bluetooth">BluetoothActivity</string>
     <string name="action_settings">Settings</string>
 
-    <string name="bluetooth_on">Bluetooth On</string>
-    <string name="bluetooth_off">Bluetooth Off</string>
+    <string name="bluetooth_module_not_found">Bluetooth Module Not Found</string>
+    <string name="go_back">Go Back</string>
+
+    <string name="bluetooth_toggle_bluetooth">Toggle Bluetooth</string>
+    <string name="bluetooth_turn_on">Turn On</string>
+    <string name="bluetooth_turn_off">Turn Off</string>
+
     <string name="bluetooth_query_paired_devices">Query Paired Devices</string>
+    <string name="bluetooth_queryPairedDevices">queryPairedDevices()</string>
+
     <string name="bluetooth_discover_devices">Discover Devices</string>
+    <string name="bluetooth_startDiscovery">startDiscovery()</string>
+    <string name="bluetooth_cancelDiscovery">cancelDiscovery()</string>
+    <string name="bluetooth_isDiscovering">isDiscovering()</string>
 </resources>

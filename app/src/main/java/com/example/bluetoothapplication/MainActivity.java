@@ -1,22 +1,15 @@
 package com.example.bluetoothapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Set;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private final static int REQUEST_ENABLE_BT = 1;
-    private static int RESULT_CODE;
-
-    private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,54 +24,17 @@ public class MainActivity extends AppCompatActivity {
         int value = Integer.parseInt(getValue);
         value++;
         textView.setText(String.valueOf(value));
+        Log.i(TAG, "incrementValue() - current value is " + value);
     }
 
     public void anotherActivity(View v) {
         Intent intent = new Intent(this, AnotherActivity.class);
-        EditText editText = findViewById(R.id.editText2);
-        String message = editText.getText().toString();
-        intent.putExtra("message", message);
+//        EditText editText = findViewById(R.id.editText2);
+//        String message = editText.getText().toString();
+        String msg = "hello world";
+        intent.putExtra("message", msg);
         startActivity(intent);
     }
-
-    public void toggleBluetooth(View v) {
-
-
-        /** Check device has Bluetooth, if not exit function */
-        if (bluetoothAdapter == null) {
-            System.out.println("Device doesn't support Bluetooth");
-            return;
-        }
-        if (!bluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            onActivityResult(REQUEST_ENABLE_BT, RESULT_CODE, enableBtIntent);
-            System.out.println("---------------------------------");
-            System.out.println(RESULT_CODE);
-        } else {
-            bluetoothAdapter.disable();
-        }
-    }
-
-    public void showPairedDevices(View v) {
-        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-
-        TextView textView = findViewById(R.id.textView4);
-        StringBuilder text = new StringBuilder();
-        text.append(textView.getText().toString());
-
-        if (pairedDevices.size() > 0) {
-            // There are paired devices. Get the name and address of each paired device.
-            for (BluetoothDevice device : pairedDevices) {
-                String deviceName = device.getName();
-                String deviceHardwareAddress = device.getAddress(); // MAC address
-
-                text.append("name: " + deviceName + "\nmac: " + deviceHardwareAddress + "\n\n");
-            }
-        }
-        textView.setText(text);
-    }
-
 
     public void btActivity(View v) {
         Intent intent = new Intent(this, BluetoothActivity.class);

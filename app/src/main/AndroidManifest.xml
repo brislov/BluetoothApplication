@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".BluetoothActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AnotherActivity"
             android:parentActivityName=".MainActivity" />
